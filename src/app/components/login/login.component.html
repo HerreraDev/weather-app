@@ -1,0 +1,77 @@
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="formSubmit(loginForm.value)"
+  class="login-form"
+>
+  <p class="login-form-title">
+    <span style="font-weight: bold; color: black"> {{ title }}</span>
+  </p>
+
+  <input
+    formControlName="email"
+    type="email"
+    required="true"
+    placeholder="Email"
+    name="ec"
+    class="login-form-input"
+  />
+  <ng-container *ngFor="let error of error_msg.email">
+    <div
+      class="login-form-validation-error"
+      *ngIf="
+        loginForm.get('email')!.hasError(error.type) &&
+        (loginForm.get('email')!.dirty || loginForm.get('email')!.touched)
+      "
+    >
+      {{ error.message }}
+    </div>
+  </ng-container>
+
+  <input
+    formControlName="password"
+    type="password"
+    required="true"
+    placeholder="Password"
+    name="pc"
+    class="login-form-input"
+  />
+  <ng-container *ngFor="let error of error_msg.password">
+    <div
+      class="login-form-validation-error"
+      *ngIf="
+        loginForm.get('password')!.hasError(error.type) &&
+        (loginForm.get('password')!.dirty || loginForm.get('password')!.touched)
+      "
+    >
+      {{ error.message }}
+    </div>
+  </ng-container>
+
+  <input
+    *ngIf="!loading"
+    [disabled]="!loginForm.valid"
+    type="submit"
+    expand="block"
+    name="Login"
+    value="Enter"
+    class="login-submit"
+  />
+
+  <div *ngIf="loading" class="login-form-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <a
+    *ngIf="!loading && !isSignUp"
+    class="form-login-register-link"
+    (click)="changeFormState()"
+    >Don't have an account? Register.</a
+  >
+
+  <a
+    *ngIf="!loading && isSignUp"
+    class="form-login-register-link"
+    (click)="changeFormState()"
+    >Already have an account? Login.</a
+  >
+</form>
