@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  Form,
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({

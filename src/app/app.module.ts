@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { WeatherComponent } from './components/weather/weather.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     ToastrModule.forRoot(), // ToastrModule added
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

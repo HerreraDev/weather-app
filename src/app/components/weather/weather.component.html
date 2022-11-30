@@ -1,2 +1,114 @@
-<p>weather works!</p>
-<button (click)="logout()">logout</button>
+<div class="container mt-4 search-panel">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <h2 class="search-panel-title">¡Welcome to the WeatherApp! 🌞⛅🌤️🌥️🌦️</h2>
+
+      <div class="row">
+        <p class="search-panel-text w-100">You can search by:</p>
+        <button class="btn btn-name" (click)="switchSearchState(true)">
+          Name
+        </button>
+        <p class="search-panel-divisor-text ml-2">OR</p>
+        <button class="btn btn-zipcode ml-2" (click)="switchSearchState(false)">
+          Zip code and country code
+        </button>
+      </div>
+
+      <div class="row mt-4">
+        <form
+          class="w-100"
+          [formGroup]="searchForm"
+          (ngSubmit)="formSubmit(searchForm.value)"
+        >
+          <div class="row w-100">
+            <div class="col-10">
+              <input
+                *ngIf="isSearchingByName"
+                type="text"
+                placeholder="Search by name. E.g: London"
+                class="search-panel-input"
+                formControlName="name"
+              />
+              <ng-container *ngFor="let error of error_msg.name">
+                <div
+                  class="search-panel-form-validation-error"
+                  *ngIf="
+                    searchForm.get('name')!.hasError(error.type) &&
+                    (searchForm.get('name')!.dirty ||
+                      searchForm.get('name')!.touched)
+                  "
+                >
+                  {{ error.message }}
+                </div>
+              </ng-container>
+
+              <input
+                *ngIf="!isSearchingByName"
+                type="text"
+                placeholder="Search by zip code and country code. E.g: E14,GB"
+                class="search-panel-input"
+                formControlName="zipAndCountry"
+              />
+              <ng-container *ngFor="let error of error_msg.zipAndCountry">
+                <div
+                  class="search-panel-form-validation-error"
+                  *ngIf="
+                    searchForm.get('zipAndCountry')!.hasError(error.type) &&
+                    (searchForm.get('zipAndCountry')!.dirty ||
+                      searchForm.get('zipAndCountry')!.touched)
+                  "
+                >
+                  {{ error.message }}
+                </div>
+              </ng-container>
+            </div>
+            <div class="col-2">
+              <button
+                class="btn search-panel-submit"
+                [disabled]="!searchForm.valid"
+                type="submit"
+              >
+                🔎
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="row">
+        <hr />
+      </div>
+
+      <div
+        *ngIf="results"
+        class="row w-100 justify-content-center mt-4 search-results"
+      >
+        <div *ngIf="loading" class="form-spinner w-100">
+          <mat-spinner></mat-spinner>
+        </div>
+
+        <div *ngFor="let result of results" class="mt-2">
+          <div class="card card-width">
+            <div class="card-body">
+              <h5 class="card-title">Name: {{ result.name }}</h5>
+              <p class="card-text">Lat: {{ result.lat }}</p>
+              <p class="card-text">Lon: {{ result.lon }}</p>
+              <p class="card-text">Country: {{ result.country }}</p>
+              <button class="btn btn-success">Select</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="results" class="row">
+        <hr />
+      </div>
+
+      <div class="row">
+        <p class="search-panel-text w-100">Favorites 🌠</p>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

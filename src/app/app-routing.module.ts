@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SingupComponent },
-  { path: 'weather', component: WeatherComponent, canActivate: [AuthGuard] },
+  // { path: 'weather', component: WeatherComponent, canActivate: [AuthGuard] },
+  { path: 'weather', component: WeatherComponent },
 ];
 
 @NgModule({
