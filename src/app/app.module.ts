@@ -25,6 +25,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { WeatherComponent } from './components/weather/weather.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { LocationDetailComponent } from './components/location-detail/location-detail.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     SingupComponent,
     WeatherComponent,
+    LocationDetailComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

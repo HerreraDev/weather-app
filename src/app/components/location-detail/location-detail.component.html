@@ -1,0 +1,11 @@
+<div class="card card-width">
+  <div class="card-body">
+    <h5 class="card-title">Name: {{ locationInformation.name }}</h5>
+    <p class="card-text">Lat: {{ locationInformation.lat }}</p>
+    <p class="card-text">Lon: {{ locationInformation.lon }}</p>
+    <p class="card-text">Country: {{ locationInformation.country }}</p>
+    <button class="btn btn-success" (click)="selectedItem(locationInformation)">
+      Select
+    </button>
+  </div>
+</div>

@@ -7,9 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WeatherService {
   private apiKey = WEATHER_API_KEY;
-  private weatherURI = '';
   private geoCodingURIByName = `http://api.openweathermap.org/geo/1.0/direct?appid=${this.apiKey}&limit=4`;
   private geoCodingURIByZipCode = `http://api.openweathermap.org/geo/1.0/zip?appid=${this.apiKey}`;
+  private weatherURI = `https://api.openweathermap.org/data/2.5/weather?appid=${this.apiKey}`;
+
   constructor(private httpClient: HttpClient) {}
 
   getLatLonByName(name: string) {
@@ -19,6 +20,12 @@ export class WeatherService {
   getLatLonByZipCode(zipCode: string, countryCode: string) {
     return this.httpClient.get(
       `${this.geoCodingURIByZipCode}&zip=${zipCode},${countryCode}`
+    );
+  }
+
+  getWeatherByLatLon(lat: number, lon: number) {
+    return this.httpClient.get(
+      `${this.weatherURI}&lat=${lat.toString()}&lon=${lon.toString()}`
     );
   }
 }
