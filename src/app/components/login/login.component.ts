@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   isSignUp: boolean = false;
   title = 'Sign In';
+  submitMessage = 'Login';
 
   error_msg = {
     email: [
@@ -88,9 +89,20 @@ export class LoginComponent implements OnInit {
   }
 
   changeFormState() {
-    this.isSignUp = !this.isSignUp;
-    this.title === 'Sign In'
-      ? (this.title = 'Sing Up')
-      : (this.title = 'Sign In');
+    this.loading = true;
+    setTimeout(() => {
+      this.isSignUp = !this.isSignUp;
+      this.title === 'Sign In'
+        ? (this.title = 'Sing Up')
+        : (this.title = 'Sign In');
+      this.title === 'Sign In'
+        ? (this.submitMessage = 'Login')
+        : (this.submitMessage = 'Register');
+      this.loading = false;
+    }, 500);
+  }
+
+  test() {
+    this.loginForm.setValue({ email: 'test@mail.com', password: '123456' });
   }
 }

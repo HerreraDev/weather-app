@@ -31,6 +31,8 @@
     border: 2px solid black;
     border-radius: 2rem;
     font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
 }
 
 hr{
@@ -60,4 +62,13 @@ hr{
 
 .btn-logout{
     background-color: rgb(225, 21, 21);
+}
+.btn-logout:hover{
+    transform: translateY(+7px);
+    box-shadow: 0px 15px 20px rgba(225, 21, 21, 0.4);
+}
+.btn-favorites:hover{
+    transform: translateY(-4px);
+    box-shadow: 0px 15px 20px rgba(92, 94, 11, 0.4);
+
 }

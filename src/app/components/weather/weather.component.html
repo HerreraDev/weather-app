@@ -42,8 +42,18 @@
         <hr />
       </div>
 
-      <div class="row">
-        <p class="search-panel-text w-100">Favorites 🌠</p>
+      <div class="row justify-content-center">
+        <button
+          *ngIf="!showFavorites"
+          (click)="check()"
+          class="btn btn-favorites"
+        >
+          Click here to show my favorites ⭐
+        </button>
+        <app-favorites
+          (checkCurrentEvent)="searchFavoriteAgain($event)"
+          [visible]="showFavorites"
+        ></app-favorites>
       </div>
     </div>
     <div class="col-2"></div>

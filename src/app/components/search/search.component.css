@@ -19,7 +19,6 @@
 .search-panel-input{
     width: 100%;
     border: 2px solid black;
-    border-radius: 2rem;
     padding: 0.375rem 0.75rem;
 }
 
@@ -64,6 +63,13 @@
     border: 2px solid black;
     border-radius: 2rem;
     font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+}
+
+.btn:hover{
+    transform: translateY(-7px);
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
 }
 
 .form-spinner{

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -9,6 +10,7 @@ import { UserService } from './users.service';
 })
 export class AuthService {
   isLoggedIn = false;
+  userLoggedIn!: User | any;
   constructor(
     private angularFireAuth: AngularFireAuth,
     private fireAuth: AngularFireAuth,
@@ -29,6 +31,7 @@ export class AuthService {
             this.isLoggedIn = true;
             this.router.navigateByUrl('weather');
             this.userService.uploadClient(value);
+            this.setLoggedInUser(value.email);
           },
           (err) => reject(err)
         );
@@ -41,6 +44,7 @@ export class AuthService {
       .then((result) => {
         this.isLoggedIn = true;
         this.router.navigateByUrl('weather');
+        this.setLoggedInUser(value.email);
       })
       .catch((error) => {
         this.toast.error('Incorrect email or password, try again.', 'ERROR', {
@@ -56,6 +60,7 @@ export class AuthService {
         .then(() => {
           this.router.navigateByUrl('login');
           this.isLoggedIn = false;
+          this.userLoggedIn = {};
         })
         .catch(() => {
           reject();
@@ -65,5 +70,17 @@ export class AuthService {
 
   userDetails() {
     return this.angularFireAuth.user;
+  }
+
+  setLoggedInUser(email: string) {
+    this.userService.getUsers().then(() => {
+      this.userService.usersList.forEach((user) => {
+        if (user.email === email) {
+          this.userLoggedIn = user;
+        }
+      });
+
+      console.log(this.userLoggedIn);
+    });
   }
 }

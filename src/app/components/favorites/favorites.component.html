@@ -1,0 +1,33 @@
+<p *ngIf="visible" class="search-panel-text w-100">Favorites 🌠</p>
+<div class="search-results" *ngIf="visible && user.favorites.length > 0">
+  <div class="row favorite-card" *ngFor="let favorite of user.favorites">
+    <div class="col-12">
+      <div class="row font-weight-bold justify-content-center text-size-large">
+        City {{ favorite.name }}, Country: {{ favorite.sys.country }}
+      </div>
+      <div class="row">
+        <hr />
+      </div>
+      <div class="row justify-content-between">
+        <button
+          class="btn btn-search-again"
+          (click)="checkCurrentWeather(favorite)"
+        >
+          Check current weather 🔎
+        </button>
+        <button class="btn btn-checker">Create checker 🔔</button>
+        <button class="btn btn-delete" (click)="delete(favorite)">
+          Delete 🗑️
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="user.favorites.length === 0">
+  <div class="col-12">
+    <div class="row no-favorites">
+      ¡You don't have favorites, try to add one!
+    </div>
+  </div>
+</div>

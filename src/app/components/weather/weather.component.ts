@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { WeatherService } from 'src/app/services/weather.service';
 import {
@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { LocationInformation } from 'src/app/interfaces/country-information';
+import { FavoritesComponent } from '../favorites/favorites.component';
 
 @Component({
   selector: 'app-weather',
@@ -20,13 +21,20 @@ export class WeatherComponent {
   results!: any;
   searchState = '¡Try searching something!';
   locationInformation!: LocationInformation | undefined;
-
+  @ViewChild(FavoritesComponent) favoritesComponent!: FavoritesComponent;
+  showFavorites = false;
   constructor(private authService: AuthService) {
     this.results = new Array<any>();
   }
 
+  check() {
+    this.favoritesComponent.checkFavorites();
+    this.showFavorites = !this.showFavorites;
+  }
+
   logout() {
     this.authService.signoutUser();
+    this.favoritesComponent.stopSubscription();
   }
 
   itemSelected(value: LocationInformation) {
@@ -44,5 +52,9 @@ export class WeatherComponent {
 
   searchStateChanged(state: string) {
     this.searchState = state;
+  }
+
+  searchFavoriteAgain(value: LocationInformation) {
+    this.locationInformation = value;
   }
 }

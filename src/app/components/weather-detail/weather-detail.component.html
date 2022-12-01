@@ -48,7 +48,12 @@
       </div>
       <div class="row">
         <button class="btn btn-back" (click)="searchAgain()">Go back 🔙</button>
-        <button class="btn btn-favorite ml-2">Add to favorites 🌟</button>
+        <button
+          class="btn btn-favorite ml-2"
+          (click)="addFavorites(locationWeather)"
+        >
+          Add to favorites 🌟
+        </button>
       </div>
     </div>
   </div>

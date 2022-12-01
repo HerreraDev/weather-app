@@ -1,4 +1,5 @@
 export interface LocationWeather {
+  id: number;
   weather: Weather;
   main: Main;
   sys: Sys;

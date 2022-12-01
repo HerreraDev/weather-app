@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { LocationInformation } from 'src/app/interfaces/country-information';
 import { LocationWeather } from 'src/app/interfaces/location-weather';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/users.service';
 import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
@@ -20,7 +22,11 @@ export class WeatherDetailComponent implements OnChanges {
 
   locationWeather!: LocationWeather | any;
 
-  constructor(private weatherService: WeatherService) {
+  constructor(
+    private weatherService: WeatherService,
+    private usersService: UserService,
+    private authService: AuthService
+  ) {
     this.locationWeather = {
       weather: [
         {
@@ -64,5 +70,12 @@ export class WeatherDetailComponent implements OnChanges {
 
   searchAgain() {
     this.searchAgainEvent.emit(undefined);
+  }
+
+  addFavorites(locationWeather: LocationWeather) {
+    this.usersService.addNewFavorite(
+      this.authService.userLoggedIn,
+      locationWeather
+    );
   }
 }

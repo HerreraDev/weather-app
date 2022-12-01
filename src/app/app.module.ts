@@ -28,6 +28,7 @@ import { LocationDetailComponent } from './components/location-detail/location-d
 import { SearchComponent } from './components/search/search.component';
 import { WeatherDetailComponent } from './components/weather-detail/weather-detail.component';
 import { TemperaturePipe } from './pipes/temperature.pipe';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TemperaturePipe } from './pipes/temperature.pipe';
     SearchComponent,
     WeatherDetailComponent,
     TemperaturePipe,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
