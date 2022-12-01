@@ -29,7 +29,7 @@ https://drive.google.com/drive/folders/1daRkOAo-hpthtIcpol5Ikj3-f4i6ljN_?usp=sha
      <img src="./src/assets/tutorials/login.gif" alt="imagen" style="width:900px;"/> 
 </p>
 
-#### 3 - Search a location by name o zip-code and country code
+#### 3 - Search a location by name or zip-code and country code
 <p align="center">
      <img src="./src/assets/tutorials/search.gif" alt="imagen" style="width:900px;"/> 
 </p>
@@ -43,3 +43,9 @@ https://drive.google.com/drive/folders/1daRkOAo-hpthtIcpol5Ikj3-f4i6ljN_?usp=sha
 <p align="center">
      <img src="./src/assets/tutorials/favorite_funcs.gif" alt="imagen" style="width:900px;"/> 
 </p>
+
+#### 6 - Create and delete an alert 
+<p align="center">
+     <img src="./src/assets/tutorials/alert.gif" alt="imagen" style="width:900px;"/> 
+</p>
+
