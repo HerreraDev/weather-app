@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WeatherService {
   private apiKey = WEATHER_API_KEY;
-  private geoCodingURIByName = `http://api.openweathermap.org/geo/1.0/direct?appid=${this.apiKey}&limit=4`;
-  private geoCodingURIByZipCode = `http://api.openweathermap.org/geo/1.0/zip?appid=${this.apiKey}`;
+  private geoCodingURIByName = `https://api.openweathermap.org/geo/1.0/direct?appid=${this.apiKey}&limit=4`;
+  private geoCodingURIByZipCode = `https://api.openweathermap.org/geo/1.0/zip?appid=${this.apiKey}`;
   private weatherURI = `https://api.openweathermap.org/data/2.5/weather?appid=${this.apiKey}`;
 
   constructor(private httpClient: HttpClient) {}
