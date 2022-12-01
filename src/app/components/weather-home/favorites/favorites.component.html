@@ -15,7 +15,12 @@
         >
           Check current weather 🔎
         </button>
-        <button class="btn btn-checker">Create checker 🔔</button>
+        <button
+          class="btn btn-checker"
+          (click)="openCreateCheckModal(favorite)"
+        >
+          Create checker 🔔
+        </button>
         <button class="btn btn-delete" (click)="delete(favorite)">
           Delete 🗑️
         </button>

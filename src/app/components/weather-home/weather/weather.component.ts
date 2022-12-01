@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { LocationInformation } from 'src/app/interfaces/country-information';
 import { FavoritesComponent } from '../favorites/favorites.component';
+import { NotificationsComponent } from '../../weather-notifications/notifications/notifications.component';
 
 @Component({
   selector: 'app-weather',
@@ -22,6 +23,9 @@ export class WeatherComponent {
   searchState = '¡Try searching something!';
   locationInformation!: LocationInformation | undefined;
   @ViewChild(FavoritesComponent) favoritesComponent!: FavoritesComponent;
+  @ViewChild(NotificationsComponent)
+  notificationComponent!: NotificationsComponent;
+
   showFavorites = false;
   constructor(private authService: AuthService) {
     this.results = new Array<any>();
@@ -35,6 +39,7 @@ export class WeatherComponent {
   logout() {
     this.authService.signoutUser();
     this.favoritesComponent.stopSubscription();
+    this.notificationComponent.stopSubscription();
   }
 
   itemSelected(value: LocationInformation) {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
@@ -11,6 +11,8 @@ import { UserService } from './users.service';
 export class AuthService {
   isLoggedIn = false;
   userLoggedIn!: User | any;
+  @Output() userSettedEvent: EventEmitter<any> = new EventEmitter();
+
   constructor(
     private angularFireAuth: AngularFireAuth,
     private fireAuth: AngularFireAuth,
@@ -29,7 +31,6 @@ export class AuthService {
               positionClass: 'toast-top-center',
             });
             this.isLoggedIn = true;
-            this.router.navigateByUrl('weather');
             this.userService.uploadClient(value);
             this.setLoggedInUser(value.email);
           },
@@ -43,7 +44,6 @@ export class AuthService {
       .signInWithEmailAndPassword(value.email, value.password)
       .then((result) => {
         this.isLoggedIn = true;
-        this.router.navigateByUrl('weather');
         this.setLoggedInUser(value.email);
       })
       .catch((error) => {
@@ -80,7 +80,7 @@ export class AuthService {
         }
       });
 
-      console.log(this.userLoggedIn);
+      this.userSettedEvent.emit(true);
     });
   }
 }

@@ -6,6 +6,7 @@ import {
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { LocationWeather } from '../interfaces/location-weather';
+import { Notification } from '../interfaces/notification';
 import { User } from '../interfaces/user';
 
 @Injectable({
@@ -108,6 +109,53 @@ export class UserService {
     } else {
       this.toastr.error(
         `${locationWeather.name} is not in your favorites!`,
+        'Error!'
+      );
+    }
+  }
+
+  addNewNotification(user: User, notification: Notification) {
+    user.notifications.push(notification);
+    let userToUpdate = this.firestore.collection('users').doc(user.id);
+    userToUpdate
+      .update({
+        notifications: user.notifications,
+      })
+      .then(() => {
+        this.toastr.success(
+          `Notification for ${notification.city} was created`,
+          'New notification created 🔔'
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  deleteNotification(user: User, notification: Notification) {
+    let index = user.notifications.findIndex(
+      (notif) => notif.id === notification.id
+    );
+
+    if (index > -1) {
+      user.notifications.splice(index, 1);
+      let userToUpdate = this.firestore.collection('users').doc(user.id);
+      userToUpdate
+        .update({
+          notifications: user.notifications,
+        })
+        .then(() => {
+          this.toastr.success(
+            `Notification for ${notification.city} was deleted`,
+            'Nice!'
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      this.toastr.error(
+        `Notification for ${notification.city} is not created!`,
         'Error!'
       );
     }

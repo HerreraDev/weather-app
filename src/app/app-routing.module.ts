@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { WeatherComponent } from './components/weather/weather.component';
+import { LoginComponent } from './components/administrative/login/login.component';
+import { WeatherComponent } from './components/weather-home/weather/weather.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [

@@ -1,0 +1,32 @@
+<div class="mt-4 notification-panel">
+  <h2 class="notification-panel__title">Active notifications</h2>
+  <div class="row">
+    <div class="col-12">
+      <p *ngIf="userNotifications.length === 0" class="notificactions-state">
+        ¡There aren't notifications setted!
+      </p>
+      <div
+        class="notification-card"
+        *ngFor="let notification of userNotifications"
+      >
+        <div class="row">
+          <p class="notification-card__text">
+            Notify me when {{ notification.city }} is
+            {{ notification.condition }} than {{ notification.temp }} ºF
+          </p>
+        </div>
+        <div class="row">
+          <hr />
+        </div>
+        <div class="row">
+          <button
+            class="btn btn-delete"
+            (click)="deleteNotification(notification)"
+          >
+            Delete notification
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

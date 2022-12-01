@@ -1,0 +1,79 @@
+<div class="row create-notification-panel">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <div class="row">
+      <p class="create-notification-panel__title">
+        You are creating an alert for {{ location.name }}
+      </p>
+      <hr />
+    </div>
+    <div class="row">
+      <p>Complete the following information:</p>
+    </div>
+    <div class="row">
+      <p>I want to get an alert when {{ location.name }} is:</p>
+    </div>
+    <div class="row">
+      <form
+        [formGroup]="notificationForm"
+        (ngSubmit)="confirm(notificationForm.value)"
+      >
+        <p>
+          <mat-label>Condition</mat-label>
+          <mat-form-field appearance="fill" class="my-form-field">
+            <mat-select formControlName="condition">
+              <mat-option value="more">MORE</mat-option>
+              <mat-option value="equal">EQUAL</mat-option>
+              <mat-option value="less">LESS</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <ng-container *ngFor="let error of error_msg.condition">
+            <div
+              class="notification-form-validation-error"
+              *ngIf="
+                notificationForm.get('condition')!.hasError(error.type) &&
+                (notificationForm.get('condition')!.dirty ||
+                  notificationForm.get('condition')!.touched)
+              "
+            >
+              {{ error.message }}
+            </div>
+          </ng-container>
+        </p>
+        <p>Than:</p>
+        <p>
+          <mat-form-field appearance="fill" class="my-form-field w-100">
+            <mat-label>Degrees in Fº</mat-label>
+            <input matInput formControlName="temp" />
+          </mat-form-field>
+          <ng-container *ngFor="let error of error_msg.temp">
+            <div
+              class="notification-form-validation-error"
+              *ngIf="
+                notificationForm.get('temp')?.hasError(error.type) &&
+                (notificationForm.get('temp')?.dirty ||
+                  notificationForm.get('temp')?.touched)
+              "
+            >
+              {{ error.message }}
+            </div>
+          </ng-container>
+        </p>
+        <div class="row justify-content-evenly">
+          <button
+            class="btn btn-create"
+            type="submit"
+            [disabled]="!notificationForm.valid"
+          >
+            Create
+          </button>
+          <button class="btn btn-cancel" (click)="close()">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div>
+      <hr />
+    </div>
+  </div>
+  <div class="col-2"></div>
+</div>

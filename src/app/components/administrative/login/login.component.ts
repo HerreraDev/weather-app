@@ -48,7 +48,11 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    authService.userSettedEvent.subscribe((isLogged) =>
+      this.isLogged(isLogged)
+    );
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -69,23 +73,18 @@ export class LoginComponent implements OnInit {
   formSubmit(value: any): void {
     this.loading = true;
 
-    //TimeOut just to show the spinner
-    setTimeout(() => {
-      if (this.isSignUp) {
-        this.authService.createUser(value).then(
-          (response) => {},
-          (error) => {
-            console.log(error);
-          }
-        );
-      } else {
-        this.subscription = this.authService
-          .signinUser(value)
-          .then((response: any) => {
-            this.loading = false;
-          });
-      }
-    }, 2000);
+    if (this.isSignUp) {
+      this.authService.createUser(value).then(
+        (response) => {},
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.subscription = this.authService
+        .signinUser(value)
+        .then((response: any) => {});
+    }
   }
 
   changeFormState() {
@@ -103,6 +102,16 @@ export class LoginComponent implements OnInit {
   }
 
   test() {
-    this.loginForm.setValue({ email: 'test@mail.com', password: '123456' });
+    this.loginForm.setValue({
+      email: 'martin@hotmail.com',
+      password: '123456',
+    });
+  }
+
+  isLogged(isLogged: boolean) {
+    if (isLogged) {
+      this.loading = false;
+      this.router.navigateByUrl('weather');
+    }
   }
 }

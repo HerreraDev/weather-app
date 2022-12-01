@@ -1,0 +1,72 @@
+.notification-panel{
+    margin: 2rem auto;
+    box-shadow: 0 0 1rem rgba(0,0,0,1);
+    padding: .5rem;
+    border: 2px solid black;
+    border-radius: 2rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 70%;
+    background: #FCD462;
+}
+
+.notification-panel__title{
+    margin: 2rem auto;
+    text-align: center;
+    box-shadow: 0 0 1rem rgba(0,0,0,1);
+    padding: .5rem;
+    border: 2px solid black;
+    border-radius: 2rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: white;
+}
+
+.notificactions-state{
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+    border: 2px solid #242424;
+    border-radius: 2rem;
+    text-align: center;
+    background-color: white;
+}
+
+.notification-card__text{
+    /* inline-size: 150px;
+    overflow-wrap: break-word; */
+    font-weight: bold;
+    margin: 0;
+}
+
+.notification-card{
+    background-color: white;
+    border: 2px solid #242424;
+    margin-bottom: 1rem;
+    padding: 1.4rem;
+}
+
+hr{
+    width: 100%;
+    border-top: 2px solid #242424;
+}
+
+.btn{
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 2rem;
+    font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+}
+
+.btn-delete{
+    background-color: rgba(225, 21, 21, 0.4);
+    transition: 400ms background ease-in;
+    width: 100%;
+}
+.btn-delete:hover{
+    transform: translateY(-7px);
+    box-shadow: 0px 15px 20px rgba(225, 21, 21, 0.4);
+    background-color: lightcoral;
+}

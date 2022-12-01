@@ -18,17 +18,22 @@ import {
   AngularFireAuthModule,
 } from '@angular/fire/compat/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/administrative/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { WeatherComponent } from './components/weather/weather.component';
+import { WeatherComponent } from './components/weather-home/weather/weather.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
-import { LocationDetailComponent } from './components/location-detail/location-detail.component';
-import { SearchComponent } from './components/search/search.component';
-import { WeatherDetailComponent } from './components/weather-detail/weather-detail.component';
+import { LocationDetailComponent } from './components/weather-home/location-detail/location-detail.component';
+import { SearchComponent } from './components/weather-home/search/search.component';
+import { WeatherDetailComponent } from './components/weather-home/weather-detail/weather-detail.component';
 import { TemperaturePipe } from './pipes/temperature.pipe';
-import { FavoritesComponent } from './components/favorites/favorites.component';
+import { FavoritesComponent } from './components/weather-home/favorites/favorites.component';
+import { NotificationsComponent } from './components/weather-notifications/notifications/notifications.component';
+import { CreateNotificationModalComponent } from './components/weather-notifications/create-notification-modal/create-notification-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -40,6 +45,8 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     WeatherDetailComponent,
     TemperaturePipe,
     FavoritesComponent,
+    NotificationsComponent,
+    CreateNotificationModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +60,9 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     MatProgressSpinnerModule,
     ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

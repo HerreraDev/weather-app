@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '@angular/fire/auth';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LocationInformation } from 'src/app/interfaces/country-information';
 import { LocationWeather } from 'src/app/interfaces/location-weather';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/users.service';
+import { CreateNotificationModalComponent } from '../../weather-notifications/create-notification-modal/create-notification-modal.component';
 
 @Component({
   selector: 'app-favorites',
@@ -19,7 +21,8 @@ export class FavoritesComponent {
 
   constructor(
     private usersService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private matDialog: MatDialog
   ) {
     this.generateInitialData();
   }
@@ -87,5 +90,17 @@ export class FavoritesComponent {
 
   delete(location: LocationWeather) {
     this.usersService.delteFavorite(this.authService.userLoggedIn, location);
+  }
+
+  openCreateCheckModal(location: LocationWeather) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      location: location,
+    };
+
+    this.matDialog.open(CreateNotificationModalComponent, dialogConfig);
   }
 }
