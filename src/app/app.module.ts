@@ -19,7 +19,6 @@ import {
 } from '@angular/fire/compat/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
-import { SingupComponent } from './components/singup/singup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { WeatherComponent } from './components/weather/weather.component';
@@ -27,15 +26,18 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationDetailComponent } from './components/location-detail/location-detail.component';
 import { SearchComponent } from './components/search/search.component';
+import { WeatherDetailComponent } from './components/weather-detail/weather-detail.component';
+import { TemperaturePipe } from './pipes/temperature.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SingupComponent,
     WeatherComponent,
     LocationDetailComponent,
     SearchComponent,
+    WeatherDetailComponent,
+    TemperaturePipe,
   ],
   imports: [
     BrowserModule,

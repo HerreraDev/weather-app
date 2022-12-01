@@ -1,0 +1,49 @@
+.row{
+    justify-content: center;
+}
+
+.weather-card{
+    background-color: white;
+    padding: 0.5rem;    
+    border: 2px solid#242424;
+}
+
+hr{
+    width: 50%;
+    border-top: 2px solid #242424;
+}
+
+.divider-line{
+    border-right: 2px solid #242424;
+}
+
+.weather-card__current-temp{
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.weather-card__city-info{
+    font-weight: bold;
+    font-size: large;
+}
+
+.btn{
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 2rem;
+    font-weight: bold;
+}
+
+.btn-back{
+    transition: 400ms background ease-in;
+}
+.btn-back:hover{
+    background-color: lightsalmon;
+}
+
+.btn-favorite{
+    transition: 400ms background ease-in;
+}
+.btn-favorite:hover{
+    background-color: lightgreen;
+}

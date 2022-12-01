@@ -9,9 +9,10 @@
 }
 
 .form-login-register-link{
-    text-decoration: underline; 
+    text-decoration: underline !important; 
     text-align: center; 
     display: block;
+    color: #007bff !important;
 }
 .form-login-register-link:hover{
     cursor: pointer;
@@ -40,6 +41,7 @@
     transition: 250ms background ease-in;
     border-radius: 20%;
     box-shadow: 100px;
+    cursor: pointer;
 }
 
 .login-submit:hover{

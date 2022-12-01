@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <div class="weather-card">
+      <div class="row">
+        <div class="col-6 divider-line">
+          <div class="row mt-4 weather-card__current-temp">
+            🌡️ {{ locationWeather.main.temp | temperature }} ºF
+          </div>
+          <div class="row"><hr /></div>
+          <div class="row font-weight-bold">
+            ❄️ Min: {{ locationWeather.main.temp_min | temperature }} ºF
+          </div>
+          <div class="row font-weight-bold">
+            🔥 Max: {{ locationWeather.main.temp_max | temperature }} ºF
+          </div>
+          <div class="row"><hr /></div>
+        </div>
+        <div class="col-6">
+          <div class="row mt-4 weather-card__current-temp">🏙️ Location</div>
+          <div class="row weather-card__city-info mt-4">
+            City: {{ locationWeather.name }},
+          </div>
+          <div class="row weather-card__city-info">
+            Country code: {{ locationWeather.sys.country }}
+          </div>
+          <div class="row">
+            <hr />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <hr />
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="row font-weight-bold">📅 Additional information:</div>
+          <div class="row font-weight-bold">
+            {{ locationWeather.weather[0].main }}
+          </div>
+          <div class="row text-capitalize font-weight-bold">
+            {{ locationWeather.weather[0].description }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <hr />
+      </div>
+      <div class="row">
+        <button class="btn btn-back" (click)="searchAgain()">Go back 🔙</button>
+        <button class="btn btn-favorite ml-2">Add to favorites 🌟</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-2"></div>
+</div>

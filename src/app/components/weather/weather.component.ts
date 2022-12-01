@@ -19,11 +19,9 @@ export class WeatherComponent {
   subscription!: Promise<void>;
   results!: any;
   searchState = '¡Try searching something!';
+  locationInformation!: LocationInformation | undefined;
 
-  constructor(
-    private authService: AuthService,
-    private weatherService: WeatherService
-  ) {
+  constructor(private authService: AuthService) {
     this.results = new Array<any>();
   }
 
@@ -32,18 +30,16 @@ export class WeatherComponent {
   }
 
   itemSelected(value: LocationInformation) {
-    this.weatherService.getWeatherByLatLon(value.lat, value.lon).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    this.locationInformation = value;
+  }
+
+  searchAgain(value: undefined) {
+    this.locationInformation = value;
   }
 
   searchResult(value: LocationInformation[]) {
     this.results = [...value];
+    this.locationInformation = undefined;
   }
 
   searchStateChanged(state: string) {

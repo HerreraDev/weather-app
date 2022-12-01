@@ -53,3 +53,11 @@ hr{
     text-align: center;
     background-color: white;
 }
+
+.d-grid{
+    display: grid;
+}
+
+.btn-logout{
+    background-color: rgb(225, 21, 21);
+}

@@ -1,6 +1,8 @@
 <div class="container mt-4 search-panel">
   <div class="row">
-    <div class="col-2"></div>
+    <div class="col-2">
+      <button class="btn btn-logout" (click)="logout()">Logout 🔙</button>
+    </div>
     <div class="col-8">
       <h2 class="search-panel-title">¡Welcome to the WeatherApp! 🌞⛅🌤️🌥️🌦️</h2>
 
@@ -14,8 +16,8 @@
       </div>
 
       <div
-        *ngIf="results.length > 0"
-        class="row w-100 justify-content-center mt-4 search-results"
+        *ngIf="results.length > 0 && locationInformation === undefined"
+        class="row w-100 justify-content-center mt-4 search-results d-grid"
       >
         <div *ngFor="let result of results" class="mt-2">
           <app-location-detail
@@ -23,6 +25,13 @@
             [locationInformation]="result"
           ></app-location-detail>
         </div>
+      </div>
+
+      <div *ngIf="locationInformation">
+        <app-weather-detail
+          [locationInformation]="locationInformation"
+          (searchAgainEvent)="searchAgain($event)"
+        ></app-weather-detail>
       </div>
 
       <div *ngIf="results.length === 0">
