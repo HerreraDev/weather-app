@@ -27,6 +27,7 @@ export class UserService {
     let newId = this.firestore.createId();
     user.id = newId;
     user.favorites = new Array<LocationWeather>();
+    user.notifications = new Array<Notification>();
     await this.firestore.collection('users').doc(newId).set(user);
   }
 
