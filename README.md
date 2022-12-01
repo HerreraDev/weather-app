@@ -13,10 +13,11 @@ Developed By Martín Herrera
 - Open Weather Map API
 
 #### Deployed in:
-sakdoaskdpoaskd
+https://weather-app-726d1.web.app/login
 
 ## **Tutorials:**
-Github reduces the gif's quality so I uploaded the demo videos to the following drive: https://drive.google.com/drive/folders/1daRkOAo-hpthtIcpol5Ikj3-f4i6ljN_?usp=sharing
+Github reduces the gif's quality so I uploaded the demo videos to the following drive: 
+https://drive.google.com/drive/folders/1daRkOAo-hpthtIcpol5Ikj3-f4i6ljN_?usp=sharing
 
 #### 1 - Create an account
 <p align="center">
