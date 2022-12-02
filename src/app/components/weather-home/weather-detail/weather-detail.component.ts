@@ -59,7 +59,6 @@ export class WeatherDetailComponent implements OnChanges {
         .subscribe({
           next: (res) => {
             this.locationWeather = res;
-            console.log(this.locationWeather);
           },
           error: (error) => {
             console.log(error);

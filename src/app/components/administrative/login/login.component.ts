@@ -109,8 +109,8 @@ export class LoginComponent implements OnInit {
   }
 
   isLogged(isLogged: boolean) {
+    this.loading = false;
     if (isLogged) {
-      this.loading = false;
       this.router.navigateByUrl('weather');
     }
   }

@@ -34,7 +34,16 @@ export class AuthService {
             this.userService.uploadClient(value);
             this.setLoggedInUser(value.email);
           },
-          (err) => reject(err)
+          (error) => {
+            this.toast.error(
+              'Email already in use, please try with another one.',
+              'ERROR',
+              {
+                positionClass: 'toast-top-center',
+              }
+            );
+            this.userSettedEvent.emit(false);
+          }
         );
     });
   }
