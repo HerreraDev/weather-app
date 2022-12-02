@@ -55,8 +55,10 @@ https://drive.google.com/drive/folders/1daRkOAo-hpthtIcpol5Ikj3-f4i6ljN_?usp=sha
      <img src="./src/assets/tutorials/searchagain.gif" alt="imagen" style="width:900px;"/> 
 </p>
 
-#### 6 - Create and delete an alert
+#### 6 - Create and delete alerts based on user's criteria:
+
+Once the users have been added locations to favorites, they will be able to receive notification alerts every 30 seconds.
 
 <p align="center">
-     <img src="./src/assets/tutorials/alerts.gif" alt="imagen" style="width:900px;"/> 
+     <img src="./src/assets/tutorials/checkers.gif" alt="imagen" style="width:900px;"/> 
 </p>
