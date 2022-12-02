@@ -43,20 +43,20 @@ https://drive.google.com/drive/folders/1daRkOAo-hpthtIcpol5Ikj3-f4i6ljN_?usp=sha
      <img src="./src/assets/tutorials/search.gif" alt="imagen" style="width:900px;"/> 
 </p>
 
-#### 4 - Add to favorites
+#### 4 - Add, delete and interact with the favorites
 
 <p align="center">
      <img src="./src/assets/tutorials/add_favorite.gif" alt="imagen" style="width:900px;"/> 
 </p>
 
-#### 5 - Delete from favorites and search again from favorites
+#### 5 - Search again and go back to select a previous searched location
 
 <p align="center">
-     <img src="./src/assets/tutorials/favorite_funcs.gif" alt="imagen" style="width:900px;"/> 
+     <img src="./src/assets/tutorials/searchagain.gif" alt="imagen" style="width:900px;"/> 
 </p>
 
 #### 6 - Create and delete an alert
 
 <p align="center">
-     <img src="./src/assets/tutorials/alert.gif" alt="imagen" style="width:900px;"/> 
+     <img src="./src/assets/tutorials/alerts.gif" alt="imagen" style="width:900px;"/> 
 </p>
