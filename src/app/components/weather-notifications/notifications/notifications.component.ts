@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 import { Notification } from 'src/app/interfaces/notification';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { UserService } from 'src/app/services/users.service';
 
 @Component({
@@ -12,10 +14,12 @@ export class NotificationsComponent implements OnInit {
   userNotifications!: Notification[];
   subscription: any;
   user!: any;
-
+  timer = 30;
+  monitorizationStartedFlag = false;
   constructor(
     private authService: AuthService,
-    private usersService: UserService
+    private usersService: UserService,
+    private notificationService: NotificationsService
   ) {
     this.userNotifications = this.authService.userLoggedIn.notifications;
     this.createNotificationsSubcription();
@@ -34,6 +38,17 @@ export class NotificationsComponent implements OnInit {
             this.userNotifications.push(fav);
           });
           this.deleteRepetadNotifications();
+          if (
+            this.userNotifications.length > 0 &&
+            this.monitorizationStartedFlag === false
+          ) {
+            this.startCountdown();
+            this.notificationService.startMonitorization();
+            this.monitorizationStartedFlag = true;
+          } else if (this.userNotifications.length === 0) {
+            this.notificationService.stopMonitorization();
+            this.monitorizationStartedFlag = false;
+          }
         },
         error: (error) => {
           console.log(error);
@@ -46,6 +61,7 @@ export class NotificationsComponent implements OnInit {
       (value: any, index: number, self: any) =>
         index === self.findIndex((notif: any) => notif.id === value.id)
     );
+    this.authService.userLoggedIn.notifications = this.userNotifications;
   }
 
   stopSubscription() {
@@ -65,7 +81,15 @@ export class NotificationsComponent implements OnInit {
     this.userNotifications.splice(index, 1);
   }
 
-  ngOnInit(): void {
-    console.log(this.userNotifications);
+  startCountdown() {
+    this.timer = 30;
+    interval(1000).subscribe(() => {
+      this.timer--;
+      if (this.timer === 0) {
+        this.timer = 30;
+      }
+    });
   }
+
+  ngOnInit(): void {}
 }

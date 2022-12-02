@@ -10,6 +10,7 @@ import {
 import { LocationInformation } from 'src/app/interfaces/country-information';
 import { FavoritesComponent } from '../favorites/favorites.component';
 import { NotificationsComponent } from '../../weather-notifications/notifications/notifications.component';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-weather',
@@ -27,7 +28,10 @@ export class WeatherComponent {
   notificationComponent!: NotificationsComponent;
 
   showFavorites = false;
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private notificationsService: NotificationsService
+  ) {
     this.results = new Array<any>();
   }
 
@@ -40,6 +44,7 @@ export class WeatherComponent {
     this.authService.signoutUser();
     this.favoritesComponent.stopSubscription();
     this.notificationComponent.stopSubscription();
+    this.notificationsService.stopMonitorization();
   }
 
   itemSelected(value: LocationInformation) {

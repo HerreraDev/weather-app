@@ -66,9 +66,11 @@ export class CreateNotificationModalComponent implements OnInit {
   confirm(formValue: any) {
     let notification = {} as Notification;
     notification.condition = formValue.condition;
-    notification.temp = formValue.temp;
+    notification.temp = parseFloat(formValue.temp);
     notification.city = this.location.name;
     notification.id = Math.random();
+    notification.lat = this.location.coord.lat;
+    notification.lon = this.location.coord.lon;
     this.userService.addNewNotification(
       this.authService.userLoggedIn,
       notification

@@ -27,6 +27,20 @@
           </button>
         </div>
       </div>
+      <div>
+        <p
+          class="notificactions-state timer"
+          *ngIf="userNotifications.length > 0"
+        >
+          The checker will be triggered every 30 seconds.
+        </p>
+        <p
+          *ngIf="userNotifications.length > 0"
+          class="notificactions-state timer"
+        >
+          Countdown: {{ timer }}
+        </p>
+      </div>
     </div>
   </div>
 </div>

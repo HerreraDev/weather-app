@@ -4,6 +4,7 @@ export interface LocationWeather {
   main: Main;
   sys: Sys;
   name: string;
+  coord: Coord;
 }
 
 interface Weather {
@@ -19,4 +20,9 @@ interface Main {
 
 interface Sys {
   country: string;
+}
+
+interface Coord {
+  lat: number;
+  lon: number;
 }

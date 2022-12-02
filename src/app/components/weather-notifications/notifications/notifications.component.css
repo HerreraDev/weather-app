@@ -70,3 +70,7 @@ hr{
     box-shadow: 0px 15px 20px rgba(225, 21, 21, 0.4);
     background-color: lightcoral;
 }
+
+.timer{
+    font-size: medium;
+}

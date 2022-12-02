@@ -3,4 +3,6 @@ export interface Notification {
   condition: string;
   temp: number;
   city: string;
+  lat: number;
+  lon: number;
 }
